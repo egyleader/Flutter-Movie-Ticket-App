@@ -1,0 +1,27 @@
+
+import 'package:flutter/material.dart';
+import 'package:movie_ticket_app/components/search_bar.dart';
+import 'package:movie_ticket_app/const.dart';
+
+class MovieAppBar extends StatelessWidget {
+  const MovieAppBar({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        Container(
+          width: MediaQuery.of(context).size.width * .15,
+          height: 60.0,
+          decoration: kRoundedFadedBorder,
+          child:
+              IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+        ),
+        SearchBar(hint: 'Search Movies..'),
+      ],
+    );
+  }
+}

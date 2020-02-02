@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:movie_ticket_app/components/search_bar.dart';
 import 'package:movie_ticket_app/const.dart';
-
 import 'components/background_gradient_image.dart';
+import 'components/dark_borderless_button.dart';
+import 'components/movie_app_bar.dart';
+import 'components/primary_rounder_button.dart';
 
 void main() => runApp(MyApp());
 
@@ -41,20 +42,29 @@ class _MyHomePageState extends State<MyHomePage> {
             child: Column(
               children: [
                 Padding(padding: EdgeInsets.all(10.0)),
+                MovieAppBar(),
+                Padding(padding: EdgeInsets.symmetric(vertical: 70.0)),
+                Text(
+                  'NEW.MOVIE',
+                  style: TextStyle(
+                    fontSize: 15.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Image.asset('assets/images/logo.png'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    Container(
-                      width: MediaQuery.of(context).size.width * .15,
-                      height: 60.0,
-                      decoration: kRoundedFadedBorder,
-                      child: IconButton(
-                          icon: Icon(Icons.menu),
-                          onPressed: () {
-                            
-                          }),
+                    DarkBorderlessButton(
+                      text: 'Popular with Friends',
+                      callback: () {},
                     ),
-                    SearchBar(hint: 'Search Movies..'),
+                    DarkBorderlessButton(text: '18+', callback: () {}),
+                    PrimaryRoundedButton(
+                      text: '8.7',
+                      callback: () {},
+                    ),
                   ],
                 ),
               ],
@@ -65,3 +75,4 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
