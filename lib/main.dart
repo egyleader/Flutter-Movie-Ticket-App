@@ -140,13 +140,14 @@ class MovieCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(
           padding: EdgeInsets.symmetric(horizontal:10.0),
                   child: InkWell(
             onTap: callBack,
             child: SizedBox(
-              width: MediaQuery.of(context).size.width / 3,
+              width: active ? MediaQuery.of(context).size.width / 3 :MediaQuery.of(context).size.width / 4 ,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(25.0),
                 child: Image.network(imageLink),
@@ -154,7 +155,7 @@ class MovieCard extends StatelessWidget {
             ),
           ),
         ),
-       Text(title, style: kMovieNameStyle) 
+       Text(active ? title : '', style: kMovieNameStyle) 
       ],
     );
   }
