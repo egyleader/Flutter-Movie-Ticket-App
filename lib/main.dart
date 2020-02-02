@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_ticket_app/components/red_rounded_action_button.dart';
 import 'package:movie_ticket_app/const.dart';
 import 'components/background_gradient_image.dart';
 import 'components/dark_borderless_button.dart';
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 Padding(padding: EdgeInsets.all(10.0)),
                 MovieAppBar(),
-                Padding(padding: EdgeInsets.symmetric(vertical: 70.0)),
+                Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
                 Text(
                   'NEW.MOVIE',
                   style: TextStyle(
@@ -53,6 +54,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Image.asset('assets/images/logo.png'),
+                Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -67,6 +69,38 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
+                Padding(
+                  padding:
+                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Text(
+                        '2019',
+                        style: kSmallMainTextStyle,
+                      ),
+                      Text('•', style: kPromaryColorTextStyle),
+                      Text('Crime, Drama, Thriller',
+                          style: kSmallMainTextStyle),
+                      Text('•', style: kPromaryColorTextStyle),
+                      Text('DataSat, Dolby Digital',
+                          style: kSmallMainTextStyle),
+                    ],
+                  ),
+                ),
+                Image.asset('assets/images/divider.png'),
+                RedRoundedActionButton(text: 'BUY TICKET', callback: () {}),
+                Expanded(
+                    child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    MovieCard(
+                      title: 'JOKER',
+                      imageLink:
+                          'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c58b4681277211.5cfa6e54a6d3d.jpg',
+                    ),
+                  ],
+                )),
               ],
             ),
           ),
@@ -76,3 +110,30 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
+class MovieCard extends StatelessWidget {
+  String imageLink;
+
+  String title;
+
+  Function callBack;
+
+  MovieCard({@required this.title, @required this.imageLink , @required this.callBack});
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        InkWell(
+          onTap: callBack,
+                  child: SizedBox(
+            width: MediaQuery.of(context).size.width / 3,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(15.0),
+              child: Image.network(imageLink),
+            ),
+          ),
+        ),
+        Text(title, style: kMovieNameStyle)
+      ],
+    );
+  }
+}
