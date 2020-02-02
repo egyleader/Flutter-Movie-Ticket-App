@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/components/red_rounded_action_button.dart';
 import 'package:movie_ticket_app/const.dart';
+import 'package:movie_ticket_app/screens/buy_ticket.dart';
 import 'components/background_gradient_image.dart';
 import 'components/dark_borderless_button.dart';
 import 'components/movie_app_bar.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-      int index = 1;
+  int index = 1;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -30,13 +31,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
-   final  String backgroundImage = movies[widget.index].imageURL;
-   final  String age = movies[widget.index].age;
-   final  String rating = movies[widget.index].rating.toString();
-   final  String year = movies[widget.index].date.year.toString();
-   final  String categories = movies[widget.index].categorires;
-   final  String technology = movies[widget.index].technology;
+    final String backgroundImage = movies[widget.index].imageURL;
+    final String age = movies[widget.index].age;
+    final String rating = movies[widget.index].rating.toString();
+    final String year = movies[widget.index].date.year.toString();
+    final String categories = movies[widget.index].categorires;
+    final String technology = movies[widget.index].technology;
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
@@ -97,16 +97,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Image.asset('assets/images/divider.png'),
-                RedRoundedActionButton(text: 'BUY TICKET', callback: () {}),
+                RedRoundedActionButton(
+                    text: 'BUY TICKET',
+                    callback: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              BuyTicket(movies[widget.index].title),
+                        ),
+                      );
+                    }),
                 Expanded(
                     child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
                         itemCount: movies.length,
                         itemBuilder: (context, index) {
                           return MovieCard(
                               title: movies[index].title,
                               imageLink: movies[index].imageURL,
-                              active: index == widget.index ? true : false ,
+                              active: index == widget.index ? true : false,
                               callBack: () {
                                 setState(() {
                                   widget.index = index;
@@ -123,31 +134,32 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class MovieCard extends StatelessWidget {
-  String imageLink;
+  final String imageLink;
 
-  String title;
+  final String title;
 
-  Function callBack;
+  final Function callBack;
 
-  bool active; 
+  final bool active;
 
   MovieCard(
       {@required this.title,
       @required this.imageLink,
       @required this.callBack,
-      @required this.active
-      });
+      @required this.active});
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal:10.0),
-                  child: InkWell(
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          child: InkWell(
             onTap: callBack,
             child: SizedBox(
-              width: active ? MediaQuery.of(context).size.width / 3 :MediaQuery.of(context).size.width / 4 ,
+              width: active
+                  ? MediaQuery.of(context).size.width / 3
+                  : MediaQuery.of(context).size.width / 4,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(25.0),
                 child: Image.network(imageLink),
@@ -155,7 +167,7 @@ class MovieCard extends StatelessWidget {
             ),
           ),
         ),
-       Text(active ? title : '', style: kMovieNameStyle) 
+        Text(active ? title : '', style: kMovieNameStyle)
       ],
     );
   }
