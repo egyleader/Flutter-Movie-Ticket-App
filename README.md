@@ -1,16 +1,17 @@
-# movie_ticket_app
+# Flutter-UI: Movie Ticket Reservation app 
 
-A new Flutter project.
+![Flutter-UI: Movie Ticket Reservation app concept by sajon on dribbble](https://cdn.dribbble.com/users/1997192/screenshots/9393455/media/9cd089b5f7a18219743e54a84264cfd5.png)
+
+This repo is a flutter impletementaion for a movie Theater ticket reservation app  inspired by the work of   [Sajon](https://dribbble.com/shots/9393455) , I've tried to comply by the design guide as close as possible to make it identical to each other and I've added some functionality to it to make it ready for real live data .
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+- Clone this app 
+`git clone https://github.com/egyleader/Flutter-Movie-Ticket-App.git`
+- get flutter packages 
+`flutter pub get `
+- Edit and enjoy 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+any edits and commits are welcomed , don't forget to star the project for support 😄
