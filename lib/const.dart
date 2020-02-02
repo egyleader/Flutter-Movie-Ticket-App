@@ -7,10 +7,10 @@ const kActionColor = Color(0xffF00000);
 
 const kBackgroundColor = Color(0xff29282C);
 const kMovieNameStyle =
-    TextStyle(fontSize: 28.0, fontWeight: FontWeight.bold, color: Colors.white);
+    TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white);
 final kMainTextStyle = GoogleFonts.barlow(
     textStyle: TextStyle(
-        color: Colors.white, fontSize: 18.0, fontWeight: FontWeight.bold));
+        color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold));
 final kSmallMainTextStyle = kMainTextStyle.copyWith(fontSize: 16.0);
 
 final kPromaryColorTextStyle =

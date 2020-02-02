@@ -1,0 +1,57 @@
+import 'package:flutter/material.dart';
+
+class Movie {
+  String title;
+
+  String age;
+
+  String categorires;
+
+  String imageURL;
+
+  double rating;
+
+  String technology;
+
+  DateTime date;
+
+  Movie(
+      {@required this.title,
+      @required this.imageURL,
+      @required this.age,
+      @required this.rating,
+      @required this.date,
+      @required this.categorires,
+      @required this.technology});
+}
+
+final List<Movie> movies = [
+  Movie(
+      title: 'The Irishman',
+      imageURL:
+          'https://lh6.googleusercontent.com/proxy/Q7IxHgbc0KPJJXyz3iG4YtLoZ2tujvlF4_NOHJWj54bnD133PH4LJQb_vyrUSQ45rL8XHe-doyHDp9SY9vA3pn43e-iQA236PQ',
+      age: 'R',
+      rating: 8,
+      date: DateTime(2019),
+      categorires: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  Movie(
+      title: 'JOKER',
+      imageURL:
+          'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c58b4681277211.5cfa6e54a6d3d.jpg',
+      age: '18+',
+      rating: 8.7,
+      date: DateTime(2019),
+      categorires: 'Crime, Drama, Thriller',
+      technology: 'DataSat, Dolby Digital '),
+  
+  Movie(
+      title: 'Avengers: Endgame',
+      imageURL:'https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_.jpg',
+      age: 'PG-13',
+      rating: 8.5,
+      date: DateTime(2019),
+      categorires: ' Action, Adventure, Drama',
+      technology: 'DataSat, Dolby Digital '),
+  
+];

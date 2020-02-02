@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import '../const.dart';
 
 class PrimaryRoundedButton extends StatelessWidget {
-  var callback;
+  final Function callback;
 
-  var margin;
+  final double margin;
 
-  var text;
+  final String  text;
 
   PrimaryRoundedButton(
       {@required this.callback, @required this.text, this.margin = 10});

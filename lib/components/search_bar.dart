@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/const.dart';
 
 class SearchBar extends StatelessWidget {
-  String hint ;
+ final  String hint ;
   
   SearchBar({this.hint});
 

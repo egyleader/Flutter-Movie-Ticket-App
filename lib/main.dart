@@ -5,6 +5,7 @@ import 'components/background_gradient_image.dart';
 import 'components/dark_borderless_button.dart';
 import 'components/movie_app_bar.dart';
 import 'components/primary_rounder_button.dart';
+import 'model.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
+      int index = 1;
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -28,6 +30,14 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+
+   final  String backgroundImage = movies[widget.index].imageURL;
+   final  String age = movies[widget.index].age;
+   final  String rating = movies[widget.index].rating.toString();
+   final  String year = movies[widget.index].date.year.toString();
+   final  String categories = movies[widget.index].categorires;
+   final  String technology = movies[widget.index].technology;
+
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Stack(
@@ -35,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: <Widget>[
           BackgroundGradientImage(
             image: Image.network(
-              'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c58b4681277211.5cfa6e54a6d3d.jpg',
+              backgroundImage,
               fit: BoxFit.cover,
             ),
           ),
@@ -62,9 +72,9 @@ class _MyHomePageState extends State<MyHomePage> {
                       text: 'Popular with Friends',
                       callback: () {},
                     ),
-                    DarkBorderlessButton(text: '18+', callback: () {}),
+                    DarkBorderlessButton(text: age, callback: () {}),
                     PrimaryRoundedButton(
-                      text: '8.7',
+                      text: rating,
                       callback: () {},
                     ),
                   ],
@@ -76,31 +86,33 @@ class _MyHomePageState extends State<MyHomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
                       Text(
-                        '2019',
+                        year,
                         style: kSmallMainTextStyle,
                       ),
                       Text('•', style: kPromaryColorTextStyle),
-                      Text('Crime, Drama, Thriller',
-                          style: kSmallMainTextStyle),
+                      Text(categories, style: kSmallMainTextStyle),
                       Text('•', style: kPromaryColorTextStyle),
-                      Text('DataSat, Dolby Digital',
-                          style: kSmallMainTextStyle),
+                      Text(technology, style: kSmallMainTextStyle),
                     ],
                   ),
                 ),
                 Image.asset('assets/images/divider.png'),
                 RedRoundedActionButton(text: 'BUY TICKET', callback: () {}),
                 Expanded(
-                    child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: [
-                    MovieCard(
-                      title: 'JOKER',
-                      imageLink:
-                          'https://mir-s3-cdn-cf.behance.net/project_modules/1400/c58b4681277211.5cfa6e54a6d3d.jpg',
-                    ),
-                  ],
-                )),
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                        itemCount: movies.length,
+                        itemBuilder: (context, index) {
+                          return MovieCard(
+                              title: movies[index].title,
+                              imageLink: movies[index].imageURL,
+                              active: index == widget.index ? true : false ,
+                              callBack: () {
+                                setState(() {
+                                  widget.index = index;
+                                });
+                              });
+                        })),
               ],
             ),
           ),
@@ -117,22 +129,32 @@ class MovieCard extends StatelessWidget {
 
   Function callBack;
 
-  MovieCard({@required this.title, @required this.imageLink , @required this.callBack});
+  bool active; 
+
+  MovieCard(
+      {@required this.title,
+      @required this.imageLink,
+      @required this.callBack,
+      @required this.active
+      });
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        InkWell(
-          onTap: callBack,
-                  child: SizedBox(
-            width: MediaQuery.of(context).size.width / 3,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(15.0),
-              child: Image.network(imageLink),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal:10.0),
+                  child: InkWell(
+            onTap: callBack,
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width / 3,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(25.0),
+                child: Image.network(imageLink),
+              ),
             ),
           ),
         ),
-        Text(title, style: kMovieNameStyle)
+       Text(title, style: kMovieNameStyle) 
       ],
     );
   }
