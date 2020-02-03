@@ -165,9 +165,9 @@ class BuyTicket extends StatelessWidget {
                 ],
               ),
             ),
-            // Center(child: Image.asset('assets/images/screen.png')),
+            Center(child: Image.asset('assets/images/screen.png')),
             Padding(
-              padding: EdgeInsets.all(15.0),
+              padding: EdgeInsets.all(5.0),
               child: Column(
                 children: <Widget>[
                   // First Seat Row
@@ -316,7 +316,7 @@ class BuyTicket extends StatelessWidget {
                     ),
                   ),
                   Container(
-          padding: EdgeInsets.symmetric(horizontal:50.0 , vertical:15.0),
+          padding: EdgeInsets.symmetric(horizontal:40.0 , vertical:10.0),
           decoration: BoxDecoration(color:  kActionColor , borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0))),
           child: InkWell(child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
         )
