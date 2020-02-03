@@ -20,14 +20,16 @@ class BuyTicket extends StatelessWidget {
                 children: <Widget>[
                   Container(
                     width: MediaQuery.of(context).size.width * .15,
-                    height: 60.0,
+                    height: 55.0,
                     decoration: kRoundedFadedBorder,
                     child: IconButton(
                         icon: Icon(
                           Icons.keyboard_arrow_left,
                           size: 28.0,
                         ),
-                        onPressed: () {}),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        }),
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * .75,
@@ -160,10 +162,175 @@ class BuyTicket extends StatelessWidget {
                 ],
               ),
             ),
-            Center(child: Image.asset('assets/images/screen.png')),
+            // Center(child: Image.asset('assets/images/screen.png')),
+            Padding(
+              padding: EdgeInsets.all(15.0),
+              child: Column(
+                children: <Widget>[
+                  // First Seat Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20),
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20),
+                      ),
+                    ],
+                  ),
+                  // Second Row 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(isReserved: true,),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                    ],
+                  ),
+                  // Third  Row 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(isReserved: true,),
+                      CienmaSeat(isReserved: true,),
+                    ],
+                  ),
+                  // 4TH Row 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(isReserved: true,),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                    ],
+                  ),
+                  // 5TH Row 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                    ],
+                  ),
+                  // 6TH Row 
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                    ],
+                  ),
+                  // final Row 
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20),
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
+    );
+  }
+}
+
+class CienmaSeat extends StatefulWidget {
+  bool isReserved;
+
+  bool isSelected;
+
+  CienmaSeat({this.isSelected = false, this.isReserved = false});
+
+  @override
+  _CienmaSeatState createState() => _CienmaSeatState();
+}
+
+class _CienmaSeatState extends State<CienmaSeat> {
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      splashColor: Colors.transparent,
+      highlightColor: Colors.transparent,
+      onTap: () {
+        setState(() {
+          !widget.isReserved ? widget.isSelected = !widget.isSelected : null;
+        });
+      },
+      child: Container(
+          margin: EdgeInsets.symmetric(horizontal:7.0 , vertical:5.0),
+          width: MediaQuery.of(context).size.width / 15,
+          height: MediaQuery.of(context).size.width / 15,
+          decoration: BoxDecoration(
+              color: widget.isSelected
+                  ? kPimaryColor
+                  : widget.isReserved ? Colors.white : null,
+              border: !widget.isSelected && !widget.isReserved
+                  ? Border.all(color: Colors.white, width: 1.0)
+                  : null,
+              borderRadius: BorderRadius.circular(5.0))),
     );
   }
 }
@@ -217,7 +384,7 @@ class CalendarDay extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15.0),
       child: Container(
         width: 50.0,
-        height: 80.0,
+        height: 65.0,
         decoration: BoxDecoration(
             color: isActive ? kPimaryColor : null,
             borderRadius: BorderRadius.circular(15.0)),
@@ -243,9 +410,3 @@ class CalendarDay extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-

@@ -54,7 +54,7 @@ final List<Movie> movies = [
       categorires: ' Action, Adventure, Drama',
       technology: 'DataSat, Dolby Digital '),
   Movie(
-      title: 'Once Upon a Time in Hollywood',
+      title: 'Once upon a time in Hollywood',
       imageURL:'https://posterposse.com/wp-content/uploads/2019/07/Once-upon-a-time-in-hollywood-Poster-Posse-Hughes.png',
       age: 'R',
       rating: 7.7,

@@ -167,7 +167,12 @@ class MovieCard extends StatelessWidget {
             ),
           ),
         ),
-        Text(active ? title : '', style: kMovieNameStyle)
+        Text(active ? title : '',
+            style: TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ))
       ],
     );
   }
