@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:movie_ticket_app/components/calendar_day.dart';
+import 'package:movie_ticket_app/components/cienma_seat.dart';
+import 'package:movie_ticket_app/components/show_time.dart';
 
 import '../const.dart';
 
@@ -15,12 +18,12 @@ class BuyTicket extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.only(top:15.0 , left:15.0),
               child: Row(
                 children: <Widget>[
                   Container(
-                    width: MediaQuery.of(context).size.width * .15,
-                    height: 55.0,
+                    width: MediaQuery.of(context).size.width * .12,
+                    height: MediaQuery.of(context).size.width * .12,
                     decoration: kRoundedFadedBorder,
                     child: IconButton(
                         icon: Icon(
@@ -187,7 +190,7 @@ class BuyTicket extends StatelessWidget {
                       ),
                     ],
                   ),
-                  // Second Row 
+                  // Second Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -198,44 +201,14 @@ class BuyTicket extends StatelessWidget {
                       SizedBox(
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
-                      CienmaSeat(isReserved: true,),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                    ],
-                  ),
-                  // Third  Row 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      SizedBox(
-                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      CienmaSeat(
+                        isReserved: true,
                       ),
                       CienmaSeat(),
-                      CienmaSeat(isReserved: true,),
-                      CienmaSeat(isReserved: true,),
-                    ],
-                  ),
-                  // 4TH Row 
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      CienmaSeat(),
-                      SizedBox(
-                        width: (MediaQuery.of(context).size.width / 20) * 2,
-                      ),
-                      CienmaSeat(isReserved: true,),
-                      CienmaSeat(),
                       CienmaSeat(),
                     ],
                   ),
-                  // 5TH Row 
+                  // Third  Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -247,11 +220,33 @@ class BuyTicket extends StatelessWidget {
                         width: (MediaQuery.of(context).size.width / 20) * 2,
                       ),
                       CienmaSeat(),
+                      CienmaSeat(
+                        isReserved: true,
+                      ),
+                      CienmaSeat(
+                        isReserved: true,
+                      ),
+                    ],
+                  ),
+                  // 4TH Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(
+                        isReserved: true,
+                      ),
                       CienmaSeat(),
                       CienmaSeat(),
                     ],
                   ),
-                  // 6TH Row 
+                  // 5TH Row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -267,8 +262,24 @@ class BuyTicket extends StatelessWidget {
                       CienmaSeat(),
                     ],
                   ),
-                  // final Row 
-                   Row(
+                  // 6TH Row
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      SizedBox(
+                        width: (MediaQuery.of(context).size.width / 20) * 2,
+                      ),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                      CienmaSeat(),
+                    ],
+                  ),
+                  // final Row
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       SizedBox(
@@ -290,118 +301,26 @@ class BuyTicket extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class CienmaSeat extends StatefulWidget {
-  bool isReserved;
-
-  bool isSelected;
-
-  CienmaSeat({this.isSelected = false, this.isReserved = false});
-
-  @override
-  _CienmaSeatState createState() => _CienmaSeatState();
-}
-
-class _CienmaSeatState extends State<CienmaSeat> {
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      splashColor: Colors.transparent,
-      highlightColor: Colors.transparent,
-      onTap: () {
-        setState(() {
-          !widget.isReserved ? widget.isSelected = !widget.isSelected : null;
-        });
-      },
-      child: Container(
-          margin: EdgeInsets.symmetric(horizontal:7.0 , vertical:5.0),
-          width: MediaQuery.of(context).size.width / 15,
-          height: MediaQuery.of(context).size.width / 15,
-          decoration: BoxDecoration(
-              color: widget.isSelected
-                  ? kPimaryColor
-                  : widget.isReserved ? Colors.white : null,
-              border: !widget.isSelected && !widget.isReserved
-                  ? Border.all(color: Colors.white, width: 1.0)
-                  : null,
-              borderRadius: BorderRadius.circular(5.0))),
-    );
-  }
-}
-
-class ShowTime extends StatelessWidget {
-  final bool isActive;
-
-  final int price;
-
-  final String time;
-
-  ShowTime(
-      {@required this.time,
-      @required this.price,
-      @required this.isActive = false});
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(15.0),
-      padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
-      decoration: BoxDecoration(
-          border: Border.all(color: isActive ? kPimaryColor : Colors.white12),
-          borderRadius: BorderRadius.circular(15.0)),
-      child: Column(
-        children: <Widget>[
-          Text(
-            time,
-            style: TextStyle(
-                color: isActive ? kPimaryColor : Colors.white,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold),
-          ),
-          Text('From \$$price',
-              style: TextStyle(color: Colors.white, fontSize: 18.0))
-        ],
-      ),
-    );
-  }
-}
-
-// todo: make this a component
-class CalendarDay extends StatelessWidget {
-  final String dayAbbreviation;
-  final String dayNumber;
-  final bool isActive;
-  CalendarDay(
-      {@required this.dayNumber, this.dayAbbreviation, this.isActive = false});
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15.0),
-      child: Container(
-        width: 50.0,
-        height: 65.0,
-        decoration: BoxDecoration(
-            color: isActive ? kPimaryColor : null,
-            borderRadius: BorderRadius.circular(15.0)),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(dayNumber,
-                style: TextStyle(
-                    color: isActive ? kBackgroundColor : Colors.white,
-                    fontSize: 25.0,
-                    fontWeight: FontWeight.bold)),
-            Text(
-              dayAbbreviation.toUpperCase(),
-              style: TextStyle(
-                color: isActive ? kBackgroundColor : Colors.white12,
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
+            Expanded(
+                          child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(left: 25.0),
+                    child: Text(
+                      '30\$',
+                      style: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
+                    ),
+                  ),
+                  Container(
+          padding: EdgeInsets.symmetric(horizontal:50.0 , vertical:15.0),
+          decoration: BoxDecoration(color:  kActionColor , borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0))),
+          child: InkWell(child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
+        )
+                ],
               ),
             )
           ],
@@ -410,3 +329,4 @@ class CalendarDay extends StatelessWidget {
     );
   }
 }
+
