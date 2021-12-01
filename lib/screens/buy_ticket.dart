@@ -15,6 +15,7 @@ class BuyTicket extends StatelessWidget {
       backgroundColor: kBackgroundColor,
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
             Padding(
@@ -305,8 +306,7 @@ class BuyTicket extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-                          child: Row(
+            Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   const Padding(
@@ -314,9 +314,9 @@ class BuyTicket extends StatelessWidget {
                     child: Text(
                       '30\$',
                       style: TextStyle(
-                          fontSize: 30.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
+            fontSize: 30.0,
+            fontWeight: FontWeight.bold,
+            color: Colors.white),
                     ),
                   ),
                   Container(
@@ -325,8 +325,7 @@ class BuyTicket extends StatelessWidget {
           child: const InkWell(child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
         )
                 ],
-              ),
-            )
+              )
           ],
         ),
       ),
