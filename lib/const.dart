@@ -9,12 +9,12 @@ const kBackgroundColor = Color(0xff29282C);
 const kMovieNameStyle =
     TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold, color: Colors.white , );
 final kMainTextStyle = GoogleFonts.barlow(
-    textStyle: TextStyle(
+    textStyle: const TextStyle(
         color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold));
 final kSmallMainTextStyle = kMainTextStyle.copyWith(fontSize: 16.0);
 
 final kPromaryColorTextStyle =
-    TextStyle(color: kPimaryColor, fontSize: 18.0, fontWeight: FontWeight.bold);
+    const TextStyle(color: kPimaryColor, fontSize: 18.0, fontWeight: FontWeight.bold);
 
 final BoxDecoration kRoundedFadedBorder = BoxDecoration(
     border: Border.all(color: Colors.white54, width: .5),

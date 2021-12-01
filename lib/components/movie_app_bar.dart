@@ -5,7 +5,7 @@ import 'package:movie_ticket_app/const.dart';
 
 class MovieAppBar extends StatelessWidget {
   const MovieAppBar({
-    Key key,
+    Key? key,
   }) : super(key: key);
 
   @override
@@ -19,9 +19,9 @@ class MovieAppBar extends StatelessWidget {
           height: 60.0,
           decoration: kRoundedFadedBorder,
           child:
-              IconButton(icon: Icon(Icons.menu), onPressed: () {}),
+              IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
         ),
-        SearchBar(hint: 'Search Movies..'),
+        const SearchBar(hint: 'Search Movies..'),
       ],
     );
   }

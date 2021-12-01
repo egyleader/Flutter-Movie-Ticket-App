@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class Movie {
   String title;
 
@@ -18,14 +16,14 @@ class Movie {
   DateTime date;
 
   Movie(
-      {@required this.title,
-      @required this.imageURL,
-      @required this.logo,
-      @required this.age,
-      @required this.rating,
-      @required this.date,
-      @required this.categorires,
-      @required this.technology});
+      {required this.title,
+      required this.imageURL,
+      required this.logo,
+      required this.age,
+      required this.rating,
+      required this.date,
+      required this.categorires,
+      required this.technology});
 }
 
 final List<Movie> movies = [

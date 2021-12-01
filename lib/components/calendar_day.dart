@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import '../const.dart';
 
 class CalendarDay extends StatelessWidget {
-  final String dayAbbreviation;
+  final String? dayAbbreviation;
   final String dayNumber;
   final bool isActive;
-  CalendarDay(
-      {@required this.dayNumber, this.dayAbbreviation, this.isActive = false});
+  const CalendarDay(
+      {Key? key, required this.dayNumber, this.dayAbbreviation, this.isActive = false}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,7 +28,7 @@ class CalendarDay extends StatelessWidget {
                     fontSize: 25.0,
                     fontWeight: FontWeight.bold)),
             Text(
-              dayAbbreviation.toUpperCase(),
+              dayAbbreviation!.toUpperCase(),
               style: TextStyle(
                 color: isActive ? kBackgroundColor : Colors.white12,
                 fontSize: 20.0,

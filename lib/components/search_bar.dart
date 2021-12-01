@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:movie_ticket_app/const.dart';
 
 class SearchBar extends StatelessWidget {
- final  String hint ;
+ final  String? hint ;
+
+  const SearchBar({Key? key , this.hint}) : super(key: key);
   
-  SearchBar({this.hint});
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15.0),
+      padding: const EdgeInsets.symmetric(horizontal: 15.0),
       width: MediaQuery.of(context).size.width * .70,
       height: 60.0,
       decoration: kRoundedFadedBorder,
@@ -18,15 +20,16 @@ class SearchBar extends StatelessWidget {
         children: <Widget>[
           Expanded(
               child: TextField(
+            // ignore: prefer_const_constructors
             style: TextStyle(fontSize: 22, color: Colors.white),
             maxLines: 1,
             decoration: InputDecoration(
                 border: InputBorder.none,
                 labelText: hint,
-                labelStyle: TextStyle(color: Colors.white)),
+                labelStyle: const TextStyle(color: Colors.white)),
           )),
           IconButton(
-              icon: Icon(
+              icon: const Icon(
                 Icons.search,
                 size: 28.0,
               ),

@@ -8,9 +8,11 @@ import 'components/movie_app_bar.dart';
 import 'components/primary_rounder_button.dart';
 import 'model.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,6 +26,8 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   int index = 1;
+
+  MyHomePage({Key? key}) : super(key: key);
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
@@ -52,10 +56,10 @@ class _MyHomePageState extends State<MyHomePage> {
           SafeArea(
             child: Column(
               children: [
-                Padding(padding: EdgeInsets.all(10.0)),
-                MovieAppBar(),
-                Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
-                Text(
+                const Padding(padding: EdgeInsets.all(10.0)),
+                const MovieAppBar(),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 50.0)),
+                const Text(
                   'NEW.MOVIE',
                   style: TextStyle(
                     fontSize: 15.0,
@@ -64,7 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
                 Image.asset(movies[widget.index].logo),
-                Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
+                const Padding(padding: EdgeInsets.symmetric(vertical: 10.0)),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -80,8 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 ),
                 Padding(
-                  padding:
-                      EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+                  padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
@@ -103,8 +106,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>
-                              BuyTicket(movies[widget.index].title),
+                          builder: (context) => BuyTicket(movies[widget.index].title),
                         ),
                       );
                     }),
@@ -142,24 +144,21 @@ class MovieCard extends StatelessWidget {
 
   final bool active;
 
-  MovieCard(
-      {@required this.title,
-      @required this.imageLink,
-      @required this.callBack,
-      @required this.active});
+  const MovieCard(
+      {Key? key, required this.title, required this.imageLink, required this.callBack, required this.active})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
       children: <Widget>[
         Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 10.0),
           child: InkWell(
-            onTap: callBack,
+            onTap: callBack as void Function()?,
             child: SizedBox(
-              width: active
-                  ? MediaQuery.of(context).size.width / 3
-                  : MediaQuery.of(context).size.width / 4,
+              width: active ? MediaQuery.of(context).size.width / 3 : MediaQuery.of(context).size.width / 4,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(25.0),
                 child: Image.network(imageLink),
@@ -168,12 +167,11 @@ class MovieCard extends StatelessWidget {
           ),
         ),
         Text(active ? title : '',
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 18.0,
               fontWeight: FontWeight.bold,
               color: Colors.white,
             )),
-        
       ],
     );
   }

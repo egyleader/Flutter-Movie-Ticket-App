@@ -6,9 +6,9 @@ import 'package:movie_ticket_app/components/show_time.dart';
 import '../const.dart';
 
 class BuyTicket extends StatelessWidget {
-  var title;
+  final title;
 
-  BuyTicket(this.title);
+  const BuyTicket(this.title, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class BuyTicket extends StatelessWidget {
                     height: MediaQuery.of(context).size.width * .12,
                     decoration: kRoundedFadedBorder,
                     child: IconButton(
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.keyboard_arrow_left,
                           size: 28.0,
                         ),
@@ -38,7 +38,7 @@ class BuyTicket extends StatelessWidget {
                     width: MediaQuery.of(context).size.width * .75,
                     child: Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 1.5,
@@ -50,9 +50,9 @@ class BuyTicket extends StatelessWidget {
               ),
             ),
             Container(
-              margin: EdgeInsets.symmetric(vertical: 10.0),
+              margin: const EdgeInsets.symmetric(vertical: 10.0),
               width: MediaQuery.of(context).size.width * .9,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.black,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(25.0),
@@ -64,8 +64,8 @@ class BuyTicket extends StatelessWidget {
                     vertical: 10.0, horizontal: 10.0),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: <Widget>[
+                  child:  Row(
+                    children: const <Widget> [
                       CalendarDay(
                         dayNumber: '9',
                         dayAbbreviation: 'TH',
@@ -129,35 +129,38 @@ class BuyTicket extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Icon(
+                  const Icon(
                     Icons.tv,
                     color: kPimaryColor,
                     size: 25.0,
                   ),
-                  SizedBox(width: 20.0),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text('Star Cineplex Bangladesh', style: kMainTextStyle),
-                      Text('panthapath , 1205 Dhaka, Bangladesh',
-                          style:
-                              TextStyle(color: Colors.white30, fontSize: 18.0)),
-                      SizedBox(height: 10.0),
-                      Row(
-                        children: <Widget>[
-                          Text('2D', style: kMainTextStyle),
-                          SizedBox(width: 10.0),
-                          Text('3D',
-                              style: TextStyle(
-                                  color: Colors.white30,
-                                  fontSize: 18.0,
-                                  fontWeight: FontWeight.bold)),
-                        ],
-                      )
-                    ],
+                  const SizedBox(width: 20.0),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text('Star Cineplex Bangladesh', style: kMainTextStyle),
+                        const Text('panthapath , 1205 Dhaka, Bangladesh',
+                        overflow: TextOverflow.ellipsis,
+                            style:
+                                TextStyle(color: Colors.white30, fontSize: 18.0)),
+                        const SizedBox(height: 10.0),
+                        Row(
+                          children: <Widget>[
+                            Text('2D', style: kMainTextStyle),
+                            const SizedBox(width: 10.0),
+                            const Text('3D',
+                                style: TextStyle(
+                                    color: Colors.white30,
+                                    fontSize: 18.0,
+                                    fontWeight: FontWeight.bold)),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
-                  SizedBox(width: 20.0),
-                  Icon(
+                  const SizedBox(width: 20.0),
+                  const Icon(
                     Icons.keyboard_arrow_right,
                     size: 30.0,
                     color: Colors.white38,
@@ -167,8 +170,9 @@ class BuyTicket extends StatelessWidget {
             ),
             Center(child: Image.asset('assets/images/screen.png')),
             Padding(
-              padding: EdgeInsets.all(5.0),
+              padding: const EdgeInsets.all(5.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   // First Seat Row
                   Row(
@@ -305,8 +309,8 @@ class BuyTicket extends StatelessWidget {
                           child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25.0),
+                  const Padding(
+                    padding: EdgeInsets.only(left: 25.0),
                     child: Text(
                       '30\$',
                       style: TextStyle(
@@ -316,9 +320,9 @@ class BuyTicket extends StatelessWidget {
                     ),
                   ),
                   Container(
-          padding: EdgeInsets.symmetric(horizontal:40.0 , vertical:10.0),
-          decoration: BoxDecoration(color:  kActionColor , borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0))),
-          child: InkWell(child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
+          padding: const EdgeInsets.symmetric(horizontal:40.0 , vertical:10.0),
+          decoration: const BoxDecoration(color:  kActionColor , borderRadius: BorderRadius.only(topLeft: Radius.circular(25.0))),
+          child: const InkWell(child: Text('Pay' , style: TextStyle(color: Colors.white ,fontSize: 25.0 , fontWeight:FontWeight.bold))),
         )
                 ],
               ),

@@ -10,9 +10,9 @@ class ShowTime extends StatefulWidget {
   final String time;
 
   ShowTime(
-      {@required this.time,
-      @required this.price,
-      @required this.isActive = false});
+      {Key? key, required this.time,
+      required this.price,
+      this.isActive = false}) : super(key: key);
 
   @override
   _ShowTimeState createState() => _ShowTimeState();
@@ -30,8 +30,8 @@ class _ShowTimeState extends State<ShowTime> {
         });
       },
       child: Container(
-        margin: EdgeInsets.all(15.0),
-        padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
+        margin: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.symmetric(horizontal: 25.0, vertical: 10.0),
         decoration: BoxDecoration(
             border: Border.all(
                 color: widget.isActive ? kPimaryColor : Colors.white12),
@@ -46,7 +46,7 @@ class _ShowTimeState extends State<ShowTime> {
                   fontWeight: FontWeight.bold),
             ),
             Text('From \$${widget.price}',
-                style: TextStyle(color: Colors.white, fontSize: 18.0))
+                style: const TextStyle(color: Colors.white, fontSize: 18.0))
           ],
         ),
       ),
